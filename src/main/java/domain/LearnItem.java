@@ -15,13 +15,12 @@ public class LearnItem {
 
 
     public LearnItem(String title, Category category, Level level, String tag, String memo) {
-        this.id = ++id;
         this.title = title;
         this.category = category;
         this.level = level;
         this.tag = tag;
         this.memo = memo;
-        setLocalDateTime();
+        this.localDateTime = LocalDateTime.now();
     }
 
     public void update(UpdateLearnItemCommand command) {
@@ -55,7 +54,4 @@ public class LearnItem {
         return id;
     }
 
-    public void setLocalDateTime() {
-        this.localDateTime = LocalDateTime.now();
-    }
 }
