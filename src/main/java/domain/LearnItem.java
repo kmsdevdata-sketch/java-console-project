@@ -34,6 +34,23 @@ public class LearnItem {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
     public Long getId() {
         return id;
     }

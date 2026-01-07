@@ -1,4 +1,4 @@
-package service.sort;
+package policy.sort;
 
 import domain.LearnItem;
 
