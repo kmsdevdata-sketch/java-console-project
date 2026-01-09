@@ -5,5 +5,5 @@ import domain.LearnItem;
 import java.util.List;
 
 public interface SortStrategy {
-    List<LearnItem> sort();
+    List<LearnItem> sort(List<LearnItem> items);
 }

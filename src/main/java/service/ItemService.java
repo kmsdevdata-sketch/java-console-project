@@ -1,7 +1,9 @@
 package service;
 
+import command.CreateLearnItemCommand;
 import command.UpdateLearnItemCommand;
 import domain.LearnItem;
+import dto.LearnItemSummary;
 import repository.ItemRepository;
 
 import java.util.List;
@@ -14,7 +16,8 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public Long join(LearnItem learnItem) {
+    public Long join(CreateLearnItemCommand command) {
+        LearnItem learnItem = LearnItem.create(command);
         return itemRepository.save(learnItem);
     }
 
@@ -34,4 +37,9 @@ public class ItemService {
         itemRepository.delete(id);
     }
 
+    public List<LearnItemSummary> getItemSummaries() {
+        return itemRepository.findAll().stream()
+                .map(LearnItemSummary::from)
+                .toList();
+    }
 }

@@ -1,25 +1,26 @@
 package domain;
 
 public enum Level {
-    BEGINNER, LOW, MEDIUM, HIGH, ADVANCED;
+    BEGINNER(1), LOW(2), MEDIUM(3), HIGH(4), ADVANCED(5);
 
+    private final int score;
 
-    public static Level from(int num) {
-        if (num == 1) {
-            return BEGINNER;
-        }
-        if (num == 2) {
-            return LOW;
-        }
-        if (num == 3) {
-            return MEDIUM;
-        }
-        if (num == 4) {
-            return HIGH;
-        }
-        if (num == 5) {
-            return ADVANCED;
-        }
-        throw new IllegalArgumentException("[ERROR] 1~5까지의 숫자중 입력해주세요");
+    Level(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public static Level from(int input) {
+        return switch (input) {
+            case 1 -> BEGINNER;
+            case 2 -> LOW;
+            case 3 -> MEDIUM;
+            case 4 -> HIGH;
+            case 5 -> ADVANCED;
+            default -> throw new IllegalArgumentException("[ERROR] 1~5까지의 숫자중 입력해주세요");
+        };
     }
 }

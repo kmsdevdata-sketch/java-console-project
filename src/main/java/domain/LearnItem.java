@@ -1,5 +1,6 @@
 package domain;
 
+import command.CreateLearnItemCommand;
 import command.UpdateLearnItemCommand;
 
 import java.time.LocalDateTime;
@@ -12,7 +13,6 @@ public class LearnItem {
     private String tag;
     private String memo;
     private LocalDateTime localDateTime;
-
 
     public LearnItem(String title, Category category, Level level, String tag, String memo) {
         this.title = title;
@@ -30,28 +30,34 @@ public class LearnItem {
         command.getTag().ifPresent(t -> this.tag = t);
         command.getMemo().ifPresent(m -> this.memo = m);
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public static LearnItem create(CreateLearnItemCommand command) {
+        return new LearnItem(
+                command.getTitle(),
+                command.getCategory(),
+                command.getLevel(),
+                command.getTag(),
+                command.getMemo()
+        );
     }
 
-    public String getTitle() {
-        return title;
+    @Override
+    public String toString() {
+        return  "id=" + id + "\n"+
+                "title='" + title +"\n"+
+                "category=" + category +"\n" +
+                "level=" + level +"\n" +
+                "tag='" + tag + "\n" +
+                "memo='" + memo + "\n" +
+                "localDateTime=" + localDateTime;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public Level getLevel() {
-        return level;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public Long getId() {
-        return id;
-    }
+    public void setId(Long id) {this.id = id;}
+    public String getTitle() {return title;}
+    public Category getCategory() {return category;}
+    public Level getLevel() {return level;}
+    public String getTag() {return tag;}
+    public Long getId() {return id;}
+    public LocalDateTime getLocalDateTime() {return localDateTime;}
 
 }
